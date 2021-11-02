@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import logo from './assets/logo.svg'
 
 import encode from '@wasm-codecs/mozjpeg';
 // @ts-ignore
-window.Buffer = buffer.Buffer; 
+window.Buffer = buffer.Buffer;
 
 async function loadImage(src: any) {
   // Load image
@@ -41,15 +41,15 @@ function toBlob(base64: string) {
   var bin = atob(base64.replace(/^.*,/, ''));
   var buffer = new Uint8Array(bin.length);
   for (var i = 0; i < bin.length; i++) {
-      buffer[i] = bin.charCodeAt(i);
+    buffer[i] = bin.charCodeAt(i);
   }
   // Blobを作成
-  try{
-      var blob = new Blob([buffer.buffer], {
-          type: 'image/png'
-      });
-  }catch (e){
-      return false;
+  try {
+    var blob = new Blob([buffer.buffer], {
+      type: 'image/png'
+    });
+  } catch (e) {
+    return false;
   }
   return blob;
 }
@@ -66,8 +66,8 @@ function App() {
   const [encodedImage, setEncodedImage] = useState(null);
 
   const [originalSize, setOriginalSize] = useState(0);
-  const [encodedSize, setEncodedSize] = useState(0);  
-  const [optimizeSize, setOptimizeSize] = useState(0);  
+  const [encodedSize, setEncodedSize] = useState(0);
+  const [optimizeSize, setOptimizeSize] = useState(0);
 
 
   const onChangeImage = async () => {
@@ -92,7 +92,7 @@ function App() {
               quality: 80,
               colorSpace: 3
             });
-            setOptimizeSize(calcKB(new Blob([encodedImage.buffer], {type: 'image/jpeg'})['size']))
+            setOptimizeSize(calcKB(new Blob([encodedImage.buffer], { type: 'image/jpeg' })['size']))
             // console.log(encodedImage)
             // @ts-ignore
             setEncodedImage(encodedImage)
@@ -129,13 +129,17 @@ function App() {
           />
         </p>
         {originalSize > 0 && (
-          <p style={{fontSize: '0.75rem'}}>
-            オリジナルサイズ: {originalSize} KB&emsp;
-            JPEG 80%: {encodedSize} KB&emsp;
-            mozJPEG 80%: {optimizeSize} KB
-          </p>
+          <>
+            <p style={{ fontSize: '0.75rem' }}>
+              オリジナルサイズ: {originalSize} KB&emsp;
+              JPEG 80%: {encodedSize} KB
+            </p>
+            <h4 style={{marginBottom: '5px'}}> 
+              mozJPEG 80%: {optimizeSize} KB
+            </h4>
+          </>
         )}
-        <img ref={previewRef} src="" alt="" style={{width: '600px'}} />
+        <img ref={previewRef} src="" alt="" style={{ width: '600px' }} />
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
