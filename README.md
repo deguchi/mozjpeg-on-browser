@@ -32,11 +32,6 @@ https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/mozjpeg
 このWebAssemblyを使う。  
 サンプルはnode。このままでは動かない。
 
-```
-image: Buffer
-A raw RGB image input buffer.
-```
-
 encodeを実行すると
 
 ```
