@@ -1,5 +1,7 @@
 # ブラウザでmozJPEGを使って画像を圧縮するサンプル
 
+Demo
+https://deguchi.github.io/mozjpeg-on-browser/
 
 ## 動機
 
