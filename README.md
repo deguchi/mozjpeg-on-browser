@@ -54,7 +54,14 @@ Uncaught ReferenceError: buffer is not defined
 公開されているbufferをindex.htmlに追加した。
 
 
-この2つを組み合わせることで、ブラウザ上で、mozJPEGを使って画像のファイルサイズを小さくすることが可能になった。
+結論的には、
+
+```
+ctx.canvas.toDataURL('image/jpeg', 0.8)
+```
+
+canvasからJPEG画像に変換するときに圧縮率を指定できるので、小さい画像ならmozJPEGで最適化しても大きな差は出ない。  
+数MBの画像をアップロードする場合は効果ありあそう。
 
 
 ## ポイント
