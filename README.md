@@ -54,16 +54,6 @@ Uncaught ReferenceError: buffer is not defined
 公開されているbufferをindex.htmlに追加した。
 
 
-結論的には、
-
-```
-ctx.canvas.toDataURL('image/jpeg', 0.8)
-```
-
-canvasからJPEG画像に変換するときに圧縮率を指定できるので、小さい画像ならmozJPEGで最適化しても大きな差は出ない。  
-数MBの画像をアップロードする場合は効果ありあそう。
-
-
 ## ポイント
 
 publicディレクトリに、wasmファイルを置いて、url直下でアクセスできるようにした。
@@ -73,3 +63,14 @@ mozjpegのwasmファイルは、node_modulesの@wasm-codecs/mozjpegの中から�
 /public
     mozjpeg.wasm
 ```
+
+## 結論
+
+結論的には、
+
+```
+ctx.canvas.toDataURL('image/jpeg', 0.8)
+```
+
+canvasからJPEG画像に変換するときに圧縮率を指定できるので、小さい画像ならmozJPEGで最適化しても大きな差は出ない。  
+数MBの画像をアップロードする場合は効果ありあそう。
