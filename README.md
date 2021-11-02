@@ -30,8 +30,6 @@ npm start
 https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/mozjpeg
 
 このWebAssemblyを使う。  
-既存のnpmでは動作がうまくいかなかった。  
-
 サンプルはnode。このままでは動かない。
 
 ```
@@ -51,7 +49,7 @@ Uncaught ReferenceError: buffer is not defined
 <script src="https://bundle.run/buffer"></script>
 ```
 
-公開されているbufferをindex.htmlに追加した。
+公開されているbufferライブラリをindex.htmlに追加した。
 
 
 ## ポイント
