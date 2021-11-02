@@ -26,7 +26,7 @@ npm start
 
 ## 使ったライブラリ
 
-@wasm-codecs/mozjpeg
+@wasm-codecs/mozjpeg  
 https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/mozjpeg
 
 このWebAssemblyを使う。  
