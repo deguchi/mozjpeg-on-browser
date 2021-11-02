@@ -14,7 +14,7 @@ https://deguchi.github.io/mozjpeg-on-browser/
 
 ## 開発
 
-viteを使っています。
+viteを使っています。  
 https://vitejs.dev/
 
 
