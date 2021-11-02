@@ -83,6 +83,7 @@ function App() {
           // console.log(image)
           // console.log(image.data.buffer)
           if (image) {
+            // @ts-ignore
             const encodedImage = await encode(image.data.buffer, {
               width: image.width,
               height: image.height,
@@ -93,6 +94,7 @@ function App() {
             });
             setOptimizeSize(calcKB(new Blob([encodedImage.buffer], {type: 'image/jpeg'})['size']))
             // console.log(encodedImage)
+            // @ts-ignore
             setEncodedImage(encodedImage)
           }
         }
