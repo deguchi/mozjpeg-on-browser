@@ -30,7 +30,7 @@ npm start
 https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/mozjpeg
 
 このWebAssemblyを使う。  
-サンプルはnode。このままでは動かない。
+サンプルはnode。このままではブラウザ上では動かない。
 
 encodeを実行すると
 
