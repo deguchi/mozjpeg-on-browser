@@ -1,20 +1,26 @@
-# ブラウザでmozJPEGを使って画像を圧縮するサンプル
+# Sample of compressing an image in a browser using mozJPEG
+
+## for Japanese
+
+https://qiita.com/deguchi/items/d4b59c9c204297915163
 
 ## Demo
 
 https://deguchi.github.io/mozjpeg-on-browser/
 
-## 動機
+## Motive
 
-写真を扱うスマホアプリをCordovaで作っていて、写真のアップロードに時間がかかる問題を解決したかった。  
-サーバーに送ってから処理するのではなく、ブラウザ側で処理したい。
+I'm building a smartphone app in Cordova that handles photos, and I wanted to solve the problem of photo uploads taking a long time.  
+Instead of sending them to the server and then processing them, I want to process them on the browser side.
 
-画像のリサイズはすでにcanvasを使って行っている。  
-画像のファイルサイズをmozJPEGで最適化することで、より軽量にして、アップロードの高速化、表示の高速化したい。
+Image resizing is already done using canvas.  
+I would like to optimize the file size of the images with mozJPEG to make them lighter, faster uploading, and faster display.
+I'm building a smartphone app in Cordova that handles photos, and I wanted to solve the problem of photo uploads taking a long time.  
 
-## 開発
 
-viteを使っています。  
+## Develop
+
+I am using vite.  
 https://vitejs.dev/
 
 
@@ -24,46 +30,46 @@ npm start
 ```
 
 
-## 使ったライブラリ
+## Library used
 
 @wasm-codecs/mozjpeg  
 https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/mozjpeg
 
-このWebAssemblyを使う。  
-サンプルはnode。このままではブラウザ上では動かない。
+Use this WebAssembly.  
+The sample is node, which doesn't work in the browser as is.
 
-encodeを実行すると
+## Troubleshooting
+
+When you run encode If you get the error message
 
 ```
 Uncaught ReferenceError: buffer is not defined
 ```
 
-というエラーが出るので、
 
 ```
 <script src="https://bundle.run/buffer"></script>
 ```
 
-公開されているbufferライブラリをindex.htmlに追加した。
+Added the public buffer library to index.html.
 
 
-## ポイント
+## Point
 
-publicディレクトリに、wasmファイルを置いて、url直下でアクセスできるようにした。
-mozjpegのwasmファイルは、node_modulesの@wasm-codecs/mozjpegの中からコピー。
+In the public directory, I put the wasm file so that it can be accessed directly under the url.
+The mozjpeg wasm file was copied from @wasm-codecs/mozjpeg in node_modules.
 
 ```
 /public
     mozjpeg.wasm
 ```
 
-## 結論
+## Conclusion
 
-結論的には、
 
 ```
 ctx.canvas.toDataURL('image/jpeg', 0.8)
 ```
 
-canvasからJPEG画像に変換するときに圧縮率を指定できるので、小さい画像ならmozJPEGで最適化しても大きな差は出ない。  
-数MBの画像をアップロードする場合は効果ありあそう。
+In conclusion, since you can specify the compression ratio when converting canvas to JPEG images, optimizing with mozJPEG won't make a big difference for small images.  
+If you are uploading an image of several MB, it may be effective.
